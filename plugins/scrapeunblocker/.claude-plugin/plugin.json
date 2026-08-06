@@ -1,0 +1,35 @@
+{
+  "name": "scrapeunblocker",
+  "displayName": "ScrapeUnblocker",
+  "version": "1.0.0",
+  "description": "Scrape any web page through the ScrapeUnblocker anti-bot API (Cloudflare, DataDome, PerimeterX, Akamai, Shape). Adds an MCP server with fetch_html, fetch_parsed and google_search, a /scrape-url command, and reference skills.",
+  "author": {
+    "name": "ScrapeUnblocker",
+    "email": "info@scrapeunblocker.com",
+    "url": "https://scrapeunblocker.com"
+  },
+  "homepage": "https://developers.scrapeunblocker.com",
+  "repository": "https://github.com/ScrapeUnblocker/claude-code-plugin",
+  "license": "MIT",
+  "keywords": [
+    "scraping",
+    "web-data",
+    "anti-bot",
+    "cloudflare",
+    "datadome",
+    "perimeterx",
+    "akamai",
+    "proxy",
+    "serp",
+    "mcp"
+  ],
+  "userConfig": {
+    "api_key": {
+      "type": "string",
+      "title": "ScrapeUnblocker API key",
+      "description": "Your API key from app.scrapeunblocker.com. Used by the MCP server for every request.",
+      "sensitive": true,
+      "required": true
+    }
+  }
+}

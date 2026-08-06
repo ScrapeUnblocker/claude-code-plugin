@@ -1,0 +1,39 @@
+{
+  "name": "scrapeunblocker",
+  "owner": {
+    "name": "ScrapeUnblocker",
+    "email": "info@scrapeunblocker.com",
+    "url": "https://scrapeunblocker.com"
+  },
+  "description": "Official ScrapeUnblocker plugins for Claude Code - fetch any web page from behind anti-bot protection.",
+  "plugins": [
+    {
+      "name": "scrapeunblocker",
+      "source": "./plugins/scrapeunblocker",
+      "displayName": "ScrapeUnblocker",
+      "description": "Scrape any web page through the ScrapeUnblocker anti-bot API (Cloudflare, DataDome, PerimeterX, Akamai, Shape). Adds an MCP server with fetch_html, fetch_parsed and google_search, a /scrape-url command, and reference skills.",
+      "version": "1.0.0",
+      "author": {
+        "name": "ScrapeUnblocker",
+        "url": "https://scrapeunblocker.com"
+      },
+      "homepage": "https://developers.scrapeunblocker.com",
+      "repository": "https://github.com/ScrapeUnblocker/claude-code-plugin",
+      "license": "MIT",
+      "category": "web-data",
+      "keywords": [
+        "scraping",
+        "web-data",
+        "anti-bot",
+        "cloudflare",
+        "datadome",
+        "perimeterx",
+        "akamai",
+        "proxy",
+        "serp",
+        "mcp"
+      ],
+      "tags": ["web-data", "scraping", "mcp"]
+    }
+  ]
+}
