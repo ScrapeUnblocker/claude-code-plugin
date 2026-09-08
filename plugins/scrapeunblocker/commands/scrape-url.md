@@ -41,4 +41,4 @@ Target: $ARGUMENTS
 
 - For structured fields (price, title, etc.), pass `parsed` to get clean JSON instead of HTML.
 - If the result looks like a block/captcha page, retry once or add `country=US` (or the relevant country).
-- Docs: https://developers.scrapeunblocker.com?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin
+- Docs: https://docs.scrapeunblocker.com?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin

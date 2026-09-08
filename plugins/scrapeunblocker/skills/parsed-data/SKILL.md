@@ -52,4 +52,4 @@ const fresh = await su.getParsed(url, { refreshRules: true, rulesHint: "price is
 - Use parsed data for product, listing, and article pages; use raw HTML (see the `page-source` skill) when you need the full markup or a non-standard structure.
 - Combine with `proxy_country` for localized pricing/currency.
 
-Docs: https://developers.scrapeunblocker.com/guides/parsed-data?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin
+Docs: https://docs.scrapeunblocker.com/guides/parsed-data?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin

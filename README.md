@@ -43,7 +43,7 @@ Anything a normal `fetch` or `curl` returns as `403`, a captcha, or an empty JS 
 
 ## Links
 
-- Docs: [developers.scrapeunblocker.com](https://developers.scrapeunblocker.com?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin)
+- Docs: [docs.scrapeunblocker.com](https://docs.scrapeunblocker.com?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin)
 - MCP server (standalone, for other MCP clients): [`scrapeunblocker-mcp`](https://www.npmjs.com/package/scrapeunblocker-mcp)
 - SDKs: [Python](https://pypi.org/project/scrapeunblocker/), [Node.js](https://www.npmjs.com/package/scrapeunblocker), [Ruby](https://rubygems.org/gems/scrapeunblocker), [PHP](https://packagist.org/packages/scrapeunblocker/client)
 

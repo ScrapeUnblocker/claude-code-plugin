@@ -58,4 +58,4 @@ curl -X POST "https://api.scrapeunblocker.com/getPageSource?url=<ENCODED_URL>&pr
 - Check the returned HTML actually contains what you expect before parsing it.
 - For structured fields (price, title, etc.), prefer `parsed_data=true` (see the `parsed-data` skill) over parsing HTML yourself.
 
-Docs: https://developers.scrapeunblocker.com/guides/page-source?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin
+Docs: https://docs.scrapeunblocker.com/guides/page-source?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin

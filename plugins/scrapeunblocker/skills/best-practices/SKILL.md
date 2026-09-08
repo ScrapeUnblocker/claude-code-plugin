@@ -6,7 +6,7 @@ user-invocable: false
 
 # ScrapeUnblocker API
 
-ScrapeUnblocker renders web pages behind anti-bot protection and returns the HTML, AI-parsed structured JSON, Google search results, or images. One API key, a handful of endpoints. Get a key at https://app.scrapeunblocker.com?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin and read the docs at https://developers.scrapeunblocker.com?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin.
+ScrapeUnblocker renders web pages behind anti-bot protection and returns the HTML, AI-parsed structured JSON, Google search results, or images. One API key, a handful of endpoints. Get a key at https://app.scrapeunblocker.com?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin and read the docs at https://docs.scrapeunblocker.com?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin.
 
 ## Prefer the MCP tools when this plugin is installed
 
