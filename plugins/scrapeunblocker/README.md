@@ -18,6 +18,11 @@ Install from the marketplace in this repository:
 | Skill | `best-practices` | API reference for writing integrations |
 | Skill | `page-source` | Rendered HTML, render waits, country targeting |
 | Skill | `parsed-data` | Structured extraction, fixing a bad parse |
+| Skill | `serp` | Google search results as JSON (organic, ads, AI overview) |
+| Skill | `structured-data` | Plugin data (Skyscanner, eBay, Temu, Google Local) + parsed_data |
+| Skill | `mcp` | Use the ScrapeUnblocker MCP server (local + hosted) |
+| Skill | `competitive-intel` | Competitor pricing, features, reviews, hiring signals |
+| Skill | `price-comparison` | Compare prices across retailers, rank offers |
 
 ## Configuration
 
