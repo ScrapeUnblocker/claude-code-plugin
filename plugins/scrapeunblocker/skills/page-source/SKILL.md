@@ -40,7 +40,7 @@ const html = await su.getPageSource("https://example.com");
 If the content you need loads via JavaScript after the initial HTML:
 
 - Wait for a CSS selector: `method=css` and `value=#product-price`
-- Wait for a JS condition: `method=js` and `value=document.querySelectorAll('.item').length>0`
+- Wait for an XPath match: `method=xPath` and `value=//div[contains(@class,'item')]`
 - Cap the wait with `method_timeout=15` (seconds), or add a fixed `time_sleep=3`.
 
 ## Country targeting

@@ -49,7 +49,7 @@ The URL must be URL-encoded and passed as the `url` query parameter.
 | `parsed_data=true` | Return AI-parsed JSON instead of raw HTML |
 | `proxy_country=US` | Route through a specific country (ISO alpha-2) |
 | `method=css` + `value=#price` | Wait for a CSS selector before capturing |
-| `method=js` + `value=...` | Wait for a JS expression to be truthy |
+| `method=xPath` + `value=//div[@id='price']` | Wait for an XPath match (`className` and `tagName` also work) |
 | `method_timeout=15` | Cap (seconds) for the render-wait method |
 | `time_sleep=3` | Extra seconds to wait after load |
 
@@ -58,7 +58,7 @@ The URL must be URL-encoded and passed as the `url` query parameter.
 - **Encode the target URL.** Pass it URL-encoded in the `url` query parameter, not raw.
 - **Prefer parsed data.** For product/article/listing pages, `parsed_data=true` returns clean JSON and saves you brittle per-site parsers.
 - **Target the right country.** If a page is geo-restricted or localized, set `proxy_country` to match.
-- **Use render waits for JS-heavy pages.** If content loads late, wait on a selector (`method=css`) or a JS condition (`method=js`) instead of a fixed sleep.
+- **Use render waits for JS-heavy pages.** If content loads late, wait on a CSS selector (`method=css`) or an XPath (`method=xPath`) instead of a fixed sleep.
 - **Retry transient failures.** Anti-bot pages occasionally need a second attempt; retry with backoff on 5xx or empty results. The official SDKs retry automatically.
 - **Validate the response.** Occasionally a returned page can itself be a block/captcha page; check for expected content before trusting it.
 
