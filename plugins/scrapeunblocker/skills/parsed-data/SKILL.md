@@ -39,6 +39,12 @@ console.log(product.pageType, product.data);
 - `source` - how it was extracted (Schema.org, `__NEXT_DATA__`, AI rules).
 - `data` - the extracted fields.
 
+## When there is nothing to parse
+
+If the page loads but holds no structured data, the API answers **HTTP 422** with `{"error": "no_data_extracted", "detail": "..."}`. That is an answer about the page, not a failed request: it is **not billed**, and it carries no HTML. Do not retry with `parsed_data`; call again without it (or use `fetch_html`) to get the page itself.
+
+A URL that does not exist answers **404/410** with an `X-Origin-Status` header and `{"data": {"page_type": "not_found", "data": {}}}` - billed, and a retry returns the same result.
+
 ## When a parse looks wrong
 
 Force a fresh set of extraction rules and optionally hint what is missing:

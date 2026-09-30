@@ -55,6 +55,13 @@ try:
         status, body = resp.status, resp.read()
         origin_status = resp.headers.get("X-Origin-Status")
 except urllib.error.HTTPError as e:
+    if e.code == 422 and parsed:
+        detail = e.read()[:500].decode("utf-8", "replace")
+        if '"no_data_extracted"' in detail:
+            print("NOTE: no structured data could be extracted from this page (not billed). "
+                  "Run again without the parsed flag to get the HTML.")
+            sys.exit(0)
+        sys.exit(f"ERROR: ScrapeUnblocker returned HTTP {e.code}: {detail}")
     if e.code not in (404, 410):
         detail = e.read()[:500].decode("utf-8", "replace")
         sys.exit(f"ERROR: ScrapeUnblocker returned HTTP {e.code}: {detail}")
