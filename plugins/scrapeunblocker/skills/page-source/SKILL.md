@@ -55,6 +55,7 @@ curl -X POST "https://api.scrapeunblocker.com/getPageSource?url=<ENCODED_URL>&pr
 ## Tips
 
 - Retry on 5xx or empty results with a short backoff; the official SDKs do this automatically.
+- A **404 or 410 with an `X-Origin-Status` header** is the target site's own answer: the page does not exist. The body is the site's not-found page, the call is billed, and a retry returns the same result - fix the URL instead of retrying.
 - Check the returned HTML actually contains what you expect before parsing it.
 - For structured fields (price, title, etc.), prefer `parsed_data=true` (see the `parsed-data` skill) over parsing HTML yourself.
 

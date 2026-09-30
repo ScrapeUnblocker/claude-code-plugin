@@ -60,6 +60,7 @@ The URL must be URL-encoded and passed as the `url` query parameter.
 - **Target the right country.** If a page is geo-restricted or localized, set `proxy_country` to match.
 - **Use render waits for JS-heavy pages.** If content loads late, wait on a CSS selector (`method=css`) or an XPath (`method=xPath`) instead of a fixed sleep.
 - **Retry transient failures.** Anti-bot pages occasionally need a second attempt; retry with backoff on 5xx or empty results. The official SDKs retry automatically.
+- **Do not retry a missing page.** A 404 or 410 carrying `X-Origin-Status` is the target site's own answer (the page does not exist), billed like any fetched page. Retrying returns the same result; drop or fix the URL.
 - **Validate the response.** Occasionally a returned page can itself be a block/captcha page; check for expected content before trusting it.
 
 ## Official SDKs and MCP

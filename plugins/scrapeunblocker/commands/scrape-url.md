@@ -55,11 +55,20 @@ try:
         status, body = resp.status, resp.read()
         origin_status = resp.headers.get("X-Origin-Status")
 except urllib.error.HTTPError as e:
-    detail = e.read()[:500].decode("utf-8", "replace")
-    sys.exit(f"ERROR: ScrapeUnblocker returned HTTP {e.code}: {detail}")
+    if e.code not in (404, 410):
+        detail = e.read()[:500].decode("utf-8", "replace")
+        sys.exit(f"ERROR: ScrapeUnblocker returned HTTP {e.code}: {detail}")
+    # The target's own "page does not exist": delivered with its status.
+    status, body = e.code, e.read()
+    origin_status = e.headers.get("X-Origin-Status") or str(e.code)
 except (urllib.error.URLError, TimeoutError) as e:
     sys.exit(f"ERROR: request failed: {getattr(e, 'reason', e)}")
-if origin_status:
+if origin_status in ("404", "410"):
+    print(f"NOTE: the target page does not exist - the site answered HTTP {origin_status}. "
+          "That is its own answer, not a block: the call was billed and retrying returns the same result.")
+    if not body.strip():
+        sys.exit(0)
+elif origin_status:
     print(f"NOTE: the target site itself answered HTTP {origin_status}")
 if not body.strip():
     sys.exit(f"ERROR: empty response (HTTP {status})")
