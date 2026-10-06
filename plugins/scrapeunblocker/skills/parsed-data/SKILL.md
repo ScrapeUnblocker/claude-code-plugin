@@ -41,7 +41,7 @@ console.log(product.pageType, product.data);
 
 ## When there is nothing to parse
 
-If the page loads but holds no structured data, the API answers **HTTP 422** with `{"error": "no_data_extracted", "detail": "..."}`. That is an answer about the page, not a failed request: it is **not billed**, and it carries no HTML. Do not retry with `parsed_data`; call again without it (or use `fetch_html`) to get the page itself.
+If the page loads but holds no structured data, the API still answers **HTTP 200**: `data.data` is empty, `"data_extracted": false` says nothing was extracted, `detail` explains it, and `html` carries the rendered page. The call is **billed** like a plain `getPageSource`, so use that HTML - do not call again without `parsed_data` and do not retry with it. The `fetch_parsed` MCP tool returns that HTML with a note. A successful parse has no `data_extracted` field.
 
 A URL that does not exist answers **404/410** with an `X-Origin-Status` header and `{"data": {"page_type": "not_found", "data": {}}}` - billed, and a retry returns the same result.
 

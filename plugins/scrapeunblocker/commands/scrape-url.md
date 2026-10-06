@@ -55,13 +55,6 @@ try:
         status, body = resp.status, resp.read()
         origin_status = resp.headers.get("X-Origin-Status")
 except urllib.error.HTTPError as e:
-    if e.code == 422 and parsed:
-        detail = e.read()[:500].decode("utf-8", "replace")
-        if '"no_data_extracted"' in detail:
-            print("NOTE: no structured data could be extracted from this page (not billed). "
-                  "Run again without the parsed flag to get the HTML.")
-            sys.exit(0)
-        sys.exit(f"ERROR: ScrapeUnblocker returned HTTP {e.code}: {detail}")
     if e.code not in (404, 410):
         detail = e.read()[:500].decode("utf-8", "replace")
         sys.exit(f"ERROR: ScrapeUnblocker returned HTTP {e.code}: {detail}")
@@ -90,6 +83,14 @@ if parsed:
         data = json.loads(body)
     except ValueError:
         sys.exit("ERROR: expected JSON but the response is not valid JSON (see the saved file)")
+    if isinstance(data, dict) and data.get("data_extracted") is False:
+        print("NOTE: no structured data could be extracted from this page (billed like a plain fetch). "
+              "The rendered HTML follows; the full response is in the saved file.")
+        page = (data.get("html") or "").encode("utf-8")
+        print(page[:LIMIT].decode("utf-8", "ignore"))
+        if len(page) > LIMIT:
+            print(f"\n[HTML truncated to {LIMIT} bytes; the full page is in the saved file]")
+        sys.exit(0)
     text = json.dumps(data, indent=2, ensure_ascii=False)
     size = len(text.encode("utf-8"))
     if size <= LIMIT:
@@ -114,6 +115,7 @@ PY
    - If the tool or script returns an error (`ERROR: ...`), report that error to the user and stop. Do not summarize an error message as if it were page content.
    - An HTTP 200 does not always mean the page was delivered: the body can itself be a block or captcha page (titles such as "Just a moment...", "Access Denied"). If it looks like one, say so, and suggest retrying once or adding `country=XX`.
    - If the script output was truncated or the parsed JSON was too large to print, read the fields you need from the saved file with `python3` instead of guessing.
+   - If a `parsed` call says no structured data could be extracted (`data_extracted: false`), the page itself is still returned as HTML - work from that HTML; do not call again without `parsed`.
 
 5. **Summarize the result.** If the user asked for specific fields, extract them; otherwise describe the page.
 
