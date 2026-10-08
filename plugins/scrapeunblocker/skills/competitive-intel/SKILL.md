@@ -24,8 +24,8 @@ Use the plugin's MCP tools (`google_search`, `fetch_html`, `fetch_parsed`) or th
 ## Example
 
 ```python
-from scrapeunblocker import ScrapeUnblockerClient
-su = ScrapeUnblockerClient()  # reads SCRAPEUNBLOCKER_KEY
+from scrapeunblocker import Client
+su = Client()  # reads SCRAPEUNBLOCKER_KEY
 
 pricing = su.get_parsed("https://competitor.com/pricing")   # structured tiers + prices
 about   = su.get_page_source("https://competitor.com/")      # positioning / headline

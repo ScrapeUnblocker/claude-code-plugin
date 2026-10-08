@@ -39,8 +39,8 @@ curl -X POST "https://api.scrapeunblocker.com/getPageSource?url=<ENCODED_URL>&pa
 ```
 
 ```python
-from scrapeunblocker import ScrapeUnblockerClient
-su = ScrapeUnblockerClient()  # reads SCRAPEUNBLOCKER_KEY
+from scrapeunblocker import Client
+su = Client()  # reads SCRAPEUNBLOCKER_KEY
 product = su.get_parsed("https://www.example-shop.com/product/123")
 ```
 

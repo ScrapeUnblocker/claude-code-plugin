@@ -26,8 +26,8 @@ Price, availability and which retailers apply are country-specific. Route throug
 ## Example
 
 ```python
-from scrapeunblocker import ScrapeUnblockerClient
-su = ScrapeUnblockerClient()  # reads SCRAPEUNBLOCKER_KEY
+from scrapeunblocker import Client
+su = Client()  # reads SCRAPEUNBLOCKER_KEY
 
 offer = su.get_parsed("https://www.walmart.com/ip/...")   # price, title, availability
 # repeat per retailer, then rank the offers yourself
