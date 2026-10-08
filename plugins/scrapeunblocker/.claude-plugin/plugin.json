@@ -1,7 +1,7 @@
 {
   "name": "scrapeunblocker",
   "displayName": "ScrapeUnblocker",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "Scrape any web page through the ScrapeUnblocker anti-bot API (Cloudflare, DataDome, PerimeterX, Akamai, Shape). Adds an MCP server with fetch_html, fetch_parsed and google_search, a /scrape-url command, and 8 skills: page HTML, AI-parsed structured data, Google SERP results, ready-made plugin data (Skyscanner, eBay, Temu, Google Local), the MCP server, competitive & market intelligence, shopping price comparison, and integration best practices.",
   "author": {
     "name": "ScrapeUnblocker",
