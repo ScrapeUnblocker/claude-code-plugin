@@ -17,6 +17,8 @@ This plugin ships an MCP server, so the fastest path is usually a tool call rath
 | `fetch_html` | Fully rendered HTML of a page |
 | `fetch_parsed` | AI-parsed structured JSON |
 | `google_search` | Organic Google results |
+| `fetch_markdown` | A page as clean Markdown |
+| `search_and_read` | A Google search plus its top result pages as Markdown |
 
 Use the HTTP details below when writing code for the user's own project, or when the MCP server is not available.
 
