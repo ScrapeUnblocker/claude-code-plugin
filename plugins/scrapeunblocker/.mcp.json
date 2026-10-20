@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "scrapeunblocker": {
-      "description": "Fetch any web page through the ScrapeUnblocker anti-bot API (Cloudflare, DataDome, PerimeterX, Akamai, Shape). Three tools: fetch_html (fully rendered HTML), fetch_parsed (AI-parsed structured JSON), and google_search (organic SERP results).",
+      "description": "Fetch any web page through the ScrapeUnblocker anti-bot API (Cloudflare, DataDome, PerimeterX, Akamai, Shape). Tools: fetch_html (fully rendered HTML), fetch_parsed (AI-parsed structured JSON), google_search (organic SERP results), list_elements (selectors for a page's links, inputs and buttons), list_plugins / run_plugin (100+ ready-made site scrapers returning JSON), and the most-used of those as tools of their own (Amazon, Walmart, eBay, Google Shopping / Local / Maps / Images, YouTube, Zillow, Indeed, Trustpilot, Booking.com).",
       "command": "npx",
       "args": ["-y", "scrapeunblocker-mcp"],
       "env": {
