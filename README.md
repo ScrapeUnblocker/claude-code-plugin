@@ -25,6 +25,7 @@ You will be asked for your ScrapeUnblocker API key when the plugin is enabled. I
 | `fetch_markdown` | A page as clean Markdown, usually 2-25% the size of the HTML - the cheap way to read a page |
 | `search_and_read` | A Google search plus its top 1-5 result pages as Markdown, in one call |
 | `list_elements` | A page's links, inputs and buttons with ready-to-use selectors |
+| `browse_page` | Click, type, select and scroll on a page in a real browser, then return the HTML (not read-only: it acts on the website) |
 | `list_plugins` / `run_plugin` | 100+ ready-made site scrapers (Amazon, Zillow, Google Maps, YouTube, App Store...) that return clean JSON |
 | `amazon_search`, `amazon_product`, `amazon_reviews`, `walmart_search`, `ebay_search`, `google_shopping`, `google_local`, `maps_place_details`, `google_images`, `youtube_search`, `youtube_transcript`, `zillow_search`, `indeed_jobs`, `trustpilot_reviews`, `booking_hotels` | The most-used site plugins as tools of their own |
 

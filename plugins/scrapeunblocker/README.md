@@ -13,7 +13,7 @@ Install from the marketplace in this repository:
 
 | Type | Name | Purpose |
 |------|------|---------|
-| MCP server | `scrapeunblocker` | `fetch_html`, `fetch_markdown`, `fetch_parsed`, `google_search`, `search_and_read`, `list_elements`, site plugins |
+| MCP server | `scrapeunblocker` | `fetch_html`, `fetch_markdown`, `fetch_parsed`, `google_search`, `search_and_read`, `list_elements`, `browse_page`, site plugins |
 | Command | `/scrapeunblocker:scrape-url` | One-shot scrape of a URL, HTML or parsed JSON |
 | Skill | `best-practices` | API reference for writing integrations |
 | Skill | `page-source` | Rendered HTML, render waits, country targeting |

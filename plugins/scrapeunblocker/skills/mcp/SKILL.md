@@ -17,6 +17,7 @@ The MCP server lets Claude Desktop/Code, claude.ai, ChatGPT and any MCP client r
 | `fetch_markdown` | A page as clean Markdown (main content, absolute links), usually 2-25% the size of the HTML |
 | `search_and_read` | A Google search plus its top 1-5 result pages as Markdown, in one call |
 | `list_elements` | A page's links, inputs, buttons and selects, each with a ready-to-use `selector` |
+| `browse_page` | Runs browser `steps` (click, type, select, scroll, wait) on a page, then returns the HTML. The one tool not marked read-only: steps act on the website |
 | `list_plugins` / `run_plugin` | 100+ ready-made site scrapers that return clean JSON: find one with `list_plugins`, run it with `run_plugin` |
 | `amazon_search`, `amazon_product`, `amazon_reviews`, `walmart_search`, `ebay_search`, `google_shopping`, `google_local`, `maps_place_details`, `google_images`, `youtube_search`, `youtube_transcript`, `zillow_search`, `indeed_jobs`, `trustpilot_reviews`, `booking_hotels` | The most-used site plugins as tools of their own |
 
@@ -50,6 +51,6 @@ Authenticate with OAuth, or pass the key as `?key=YOUR_API_KEY`. Get a key at ht
 
 - The user wants Claude itself to browse/scrape (not write code): use the tools.
 - Building an agent or app that needs web access: wire in the MCP server.
-- A site with a plugin (check `list_plugins`): the plugin. One-off structured data from any other URL: `fetch_parsed`. Reading or summarising a page: `fetch_markdown`. Markup, selectors or browser steps: `fetch_html`. Answering a question from the web: `search_and_read`. Just the links: `google_search`.
+- A site with a plugin (check `list_plugins`): the plugin. One-off structured data from any other URL: `fetch_parsed`. Reading or summarising a page: `fetch_markdown`. Markup or selectors: `fetch_html`. Clicking or typing first: `list_elements`, then `browse_page`. Answering a question from the web: `search_and_read`. Just the links: `google_search`.
 
 Docs: https://docs.scrapeunblocker.com/sdks/mcp?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin
