@@ -59,6 +59,7 @@ const fresh = await su.getParsed(url, { refreshRules: true, rulesHint: "price is
 ## Tips
 
 - Use parsed data for product, listing, and article pages; use raw HTML (see the `page-source` skill) when you need the full markup or a non-standard structure.
+- To read, summarise or feed a page to an LLM, ask for Markdown instead (`markdown=true`, or the MCP tool `fetch_markdown`): parsed data is for named fields you store, Markdown for text a model reads. The two cannot be combined in one call (HTTP 422).
 - Combine with `proxy_country` for localized pricing/currency.
 
 Docs: https://docs.scrapeunblocker.com/guides/parsed-data?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin

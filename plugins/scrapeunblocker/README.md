@@ -14,9 +14,9 @@ Install from the marketplace in this repository:
 | Type | Name | Purpose |
 |------|------|---------|
 | MCP server | `scrapeunblocker` | `fetch_html`, `fetch_markdown`, `fetch_parsed`, `google_search`, `search_and_read`, `list_elements`, `browse_page`, site plugins |
-| Command | `/scrapeunblocker:scrape-url` | One-shot scrape of a URL, HTML or parsed JSON |
+| Command | `/scrapeunblocker:scrape-url` | One-shot scrape of a URL: HTML, Markdown or parsed JSON |
 | Skill | `best-practices` | API reference for writing integrations |
-| Skill | `page-source` | Rendered HTML, render waits, country targeting |
+| Skill | `page-source` | Rendered HTML or Markdown, render waits, country targeting |
 | Skill | `parsed-data` | Structured extraction, fixing a bad parse |
 | Skill | `serp` | Google search results as JSON (organic, ads, AI overview) |
 | Skill | `structured-data` | Plugin data (Skyscanner, eBay, Temu, Google Local) + parsed_data |

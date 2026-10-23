@@ -1,12 +1,12 @@
 ---
 name: best-practices
-description: "Build production-ready ScrapeUnblocker integrations. Reference for developers using coding assistants (Claude Code, Cursor, etc.) to scrape any URL with built-in anti-bot bypass (Cloudflare, DataDome, PerimeterX, Akamai, Shape). Covers the getPageSource endpoint (raw HTML / AI-parsed JSON), serpApi (Google results), getImage, country targeting, render waits, and retries."
+description: "Build production-ready ScrapeUnblocker integrations. Reference for developers using coding assistants (Claude Code, Cursor, etc.) to scrape any URL with built-in anti-bot bypass (Cloudflare, DataDome, PerimeterX, Akamai, Shape). Covers the getPageSource endpoint (raw HTML / Markdown / AI-parsed JSON), serpApi (Google results), getImage, country targeting, render waits, and retries."
 user-invocable: false
 ---
 
 # ScrapeUnblocker API
 
-ScrapeUnblocker renders web pages behind anti-bot protection and returns the HTML, AI-parsed structured JSON, Google search results, or images. One API key, a handful of endpoints. Get a key at https://app.scrapeunblocker.com?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin and read the docs at https://docs.scrapeunblocker.com?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin.
+ScrapeUnblocker renders web pages behind anti-bot protection and returns the HTML, clean Markdown, AI-parsed structured JSON, Google search results, or images. One API key, a handful of endpoints. Get a key at https://app.scrapeunblocker.com?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin and read the docs at https://docs.scrapeunblocker.com?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin.
 
 ## Prefer the MCP tools when this plugin is installed
 
@@ -27,11 +27,12 @@ Use the HTTP details below when writing code for the user's own project, or when
 | Use case | Endpoint | Notes |
 |----------|----------|-------|
 | Fetch a page's fully rendered HTML | `POST /getPageSource` | Bypasses anti-bot, runs a real browser |
+| A page for an LLM to read (summaries, RAG, agents) | `POST /getPageSource?markdown=true` | Clean Markdown, main content only by default |
 | Structured data (product, article, listing) without writing parsers | `POST /getPageSource?parsed_data=true` | Returns AI-parsed JSON (Schema.org / `__NEXT_DATA__` / AI rules) |
 | Google search results | `POST /serpApi` | Structured organic results |
 | Download an image behind protection | `POST /getImage` | Returns raw bytes |
 
-Always pick the most specific endpoint: use `parsed_data=true` before writing your own HTML parsing, and `serpApi` before scraping Google HTML by hand.
+Always pick the most specific endpoint: use `parsed_data=true` before writing your own HTML parsing, `markdown=true` when a model reads the page, and `serpApi` before scraping Google HTML by hand.
 
 ## Authentication
 
@@ -49,6 +50,8 @@ The URL must be URL-encoded and passed as the `url` query parameter.
 | Parameter | Purpose |
 |-----------|---------|
 | `parsed_data=true` | Return AI-parsed JSON instead of raw HTML |
+| `markdown=true` | Return the page as clean Markdown (`text/markdown`) instead of HTML |
+| `main_content_only=false` | With `markdown=true`: convert the whole page, not only the main content (default `true`) |
 | `proxy_country=US` | Route through a specific country (ISO alpha-2) |
 | `method=css` + `value=%23price` | Wait for a CSS selector (`#price`) before capturing |
 | `method=xPath` + `value=//div[@id='price']` | Wait for an XPath match (`className` and `tagName` also work) |
@@ -59,6 +62,7 @@ The URL must be URL-encoded and passed as the `url` query parameter.
 
 - **Encode the target URL.** Pass it URL-encoded in the `url` query parameter, not raw. Encode `value` too: a raw `#` in a selector starts the URL fragment and never reaches the API.
 - **Prefer parsed data.** For product/article/listing pages, `parsed_data=true` returns clean JSON and saves you brittle per-site parsers.
+- **Pick the format for the consumer.** Markdown (`markdown=true`) for text an LLM reads: summaries, RAG, agents. Parsed JSON for fields that go into a database. HTML for your own parser or selectors. `markdown` cannot be combined with `parsed_data`, `get_cookies` or `list_elements` (HTTP 422).
 - **Target the right country.** If a page is geo-restricted or localized, set `proxy_country` to match.
 - **Use render waits for JS-heavy pages.** If content loads late, wait on a CSS selector (`method=css`) or an XPath (`method=xPath`) instead of a fixed sleep.
 - **Retry transient failures.** Anti-bot pages occasionally need a second attempt; retry with backoff on 5xx or empty results. The official SDKs retry automatically.

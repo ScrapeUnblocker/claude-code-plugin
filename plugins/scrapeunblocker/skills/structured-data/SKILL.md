@@ -48,6 +48,7 @@ product = su.get_parsed("https://www.example-shop.com/product/123")
 
 1. **Is it a plugin platform** (Skyscanner / Google Local / eBay / Temu / oopbuy)? Use the plugin - it's the cleanest.
 2. **Any other product / article / listing page?** Use `parsed_data=true`.
-3. **Need raw HTML** (custom parsing, non-standard page)? Use the `page-source` skill.
+3. **Only reading or summarising the page?** Use `markdown=true` (or the MCP tool `fetch_markdown`).
+4. **Need raw HTML** (custom parsing, non-standard page)? Use the `page-source` skill.
 
 Docs: https://docs.scrapeunblocker.com/plugins/overview?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin

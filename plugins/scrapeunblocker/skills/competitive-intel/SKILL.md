@@ -7,12 +7,12 @@ description: "Real-time competitive and market intelligence using ScrapeUnblocke
 
 Turn public web pages into a competitor picture. ScrapeUnblocker handles the hard part - reaching pages that block scrapers (Cloudflare, DataDome, PerimeterX, Akamai) - so you can focus on what to collect and how to read it.
 
-Use the plugin's MCP tools (`google_search`, `fetch_html`, `fetch_parsed`) or the HTTP endpoints.
+Use the plugin's MCP tools (`google_search`, `fetch_markdown`, `fetch_parsed`, `fetch_html`) or the HTTP endpoints.
 
 ## Workflow
 
 1. **Find the pages.** `google_search` the competitor for the surfaces you need: `"<Competitor> pricing"`, `site:<competitor>.com`, `"<Competitor>" reviews`, `"<Competitor>" careers`.
-2. **Pull each page as clean data.** For pricing/feature pages, `fetch_parsed` (or `getPageSource?parsed_data=true`) returns structured JSON; for freeform pages use `fetch_html`.
+2. **Pull each page as clean data.** For pricing/feature pages, `fetch_parsed` (or `getPageSource?parsed_data=true`) returns structured JSON; read freeform pages (homepage, about, blog, careers) with `fetch_markdown` (or `getPageSource?markdown=true`).
 3. **Extract the signals:**
    - **Pricing & packaging** - tiers, prices, what's gated behind which plan.
    - **Features** - what they ship, what they're missing vs the user's product.

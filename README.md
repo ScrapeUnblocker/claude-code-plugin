@@ -34,13 +34,14 @@ You will be asked for your ScrapeUnblocker API key when the plugin is enabled. I
 ```
 /scrapeunblocker:scrape-url https://example.com
 /scrapeunblocker:scrape-url https://example.com parsed
+/scrapeunblocker:scrape-url https://example.com markdown
 /scrapeunblocker:scrape-url https://example.com country=US
 ```
 
 **Skills** - reference material Claude pulls in when it is writing scraping code for your project:
 
 - `best-practices` - endpoints, parameters, retries, choosing the right call
-- `page-source` - fetching rendered HTML, render waits, country targeting
+- `page-source` - fetching rendered HTML or Markdown (`markdown=true`), render waits, country targeting
 - `parsed-data` - structured extraction and how to fix a bad parse
 
 ## Why

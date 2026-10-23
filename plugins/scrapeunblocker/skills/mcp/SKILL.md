@@ -1,6 +1,6 @@
 ---
 name: mcp
-description: "Use the ScrapeUnblocker MCP server to give Claude (or any MCP client) live web access - fetch any page as HTML, get AI-parsed JSON, run a Google search or a ready-made site plugin (Amazon, Walmart, Google Maps, YouTube, Zillow...), all with the user's own API key. Use when the user asks to set up the MCP server, wire ScrapeUnblocker into an agent/assistant, or wants Claude to read/scrape the web through their key. Covers the local (npx) and hosted (HTTP) servers and the tools."
+description: "Use the ScrapeUnblocker MCP server to give Claude (or any MCP client) live web access - fetch any page as HTML or Markdown, get AI-parsed JSON, run a Google search or a ready-made site plugin (Amazon, Walmart, Google Maps, YouTube, Zillow...), all with the user's own API key. Use when the user asks to set up the MCP server, wire ScrapeUnblocker into an agent/assistant, or wants Claude to read/scrape the web through their key. Covers the local (npx) and hosted (HTTP) servers and the tools."
 ---
 
 # ScrapeUnblocker MCP server
@@ -14,7 +14,7 @@ The MCP server lets Claude Desktop/Code, claude.ai, ChatGPT and any MCP client r
 | `fetch_html` | Fully rendered HTML of a URL (anti-bot bypassed) |
 | `fetch_parsed` | AI-parsed structured JSON of a URL |
 | `google_search` | Structured Google organic results |
-| `fetch_markdown` | A page as clean Markdown (main content, absolute links), usually 2-25% the size of the HTML |
+| `fetch_markdown` | A page as clean Markdown (main content, absolute links; `main_content_only: false` for the whole page), usually 2-25% the size of the HTML |
 | `search_and_read` | A Google search plus its top 1-5 result pages as Markdown, in one call |
 | `list_elements` | A page's links, inputs, buttons and selects, each with a ready-to-use `selector` |
 | `browse_page` | Runs browser `steps` (click, type, select, scroll, wait) on a page, then returns the HTML. The one tool not marked read-only: steps act on the website |
@@ -51,6 +51,6 @@ Authenticate with OAuth, or pass the key as `?key=YOUR_API_KEY`. Get a key at ht
 
 - The user wants Claude itself to browse/scrape (not write code): use the tools.
 - Building an agent or app that needs web access: wire in the MCP server.
-- A site with a plugin (check `list_plugins`): the plugin. One-off structured data from any other URL: `fetch_parsed`. Reading or summarising a page: `fetch_markdown`. Markup or selectors: `fetch_html`. Clicking or typing first: `list_elements`, then `browse_page`. Answering a question from the web: `search_and_read`. Just the links: `google_search`.
+- A site with a plugin (check `list_plugins`): the plugin. One-off structured data from any other URL: `fetch_parsed`. Reading or summarising a page: `fetch_markdown` (in code: `getPageSource` with `markdown=true`, see the `page-source` skill). Markup or selectors: `fetch_html`. Clicking or typing first: `list_elements`, then `browse_page`. Answering a question from the web: `search_and_read`. Just the links: `google_search`.
 
 Docs: https://docs.scrapeunblocker.com/sdks/mcp?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin

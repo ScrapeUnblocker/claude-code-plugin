@@ -1,8 +1,8 @@
 ---
 name: scrape-url
 allowed-tools: Bash(python3:*)
-argument-hint: "<url> [parsed] [country=XX]"
-description: "Scrape any web page through the ScrapeUnblocker anti-bot API and return its HTML or AI-parsed JSON. Use when a page is blocked (403/429, captcha) or needs a real browser to render."
+argument-hint: "<url> [parsed|markdown] [country=XX]"
+description: "Scrape any web page through the ScrapeUnblocker anti-bot API and return its HTML, clean Markdown or AI-parsed JSON. Use when a page is blocked (403/429, captcha) or needs a real browser to render."
 ---
 
 # Scrape a URL with ScrapeUnblocker
@@ -17,22 +17,25 @@ Arguments: $ARGUMENTS
    - The first token is the target URL. It must start with `http://` or `https://`; otherwise stop and ask the user for a valid URL.
    - Every later token must be exactly one of the following, matched as a whole token:
      - `parsed` - return AI-parsed JSON instead of HTML.
+     - `markdown` - return the page as clean Markdown instead of HTML (best for reading or summarising it).
      - `country=XX`, where `XX` is exactly two letters - route the request through that country.
    - If any later token is anything else (for example `mode=parsed` or `country=USA`), tell the user which token was not recognised and stop. Do not guess.
+   - `parsed` and `markdown` cannot be combined; if both are given, tell the user to pick one and stop.
 
 2. **Preferred path - use this plugin's MCP tools.** They already carry the API key you entered when enabling the plugin, so nothing else is needed:
-   - no `parsed` flag -> `fetch_html` with the URL (plus the country if given)
+   - no flag -> `fetch_html` with the URL (plus the country if given)
    - `parsed` flag -> `fetch_parsed` with the URL (plus the country if given)
+   - `markdown` flag -> `fetch_markdown` with the URL (plus the country if given)
 
 3. **Fallback - direct HTTP.** Only if the MCP server is unavailable, and only when `SCRAPEUNBLOCKER_KEY` is set in the environment, run the script below, filling in its three arguments:
    - `URL` - the target URL inside **single quotes**. If the URL itself contains a single quote, replace every `'` with `%27` first. The URL must appear only in this position; never paste it into the script body or anywhere else in the command.
-   - `PARSED` - `1` if the `parsed` flag was given, otherwise `0`.
+   - `MODE` - `parsed` or `markdown` if that flag was given, otherwise `html`.
    - `COUNTRY` - the two-letter code, or an empty string `''`.
 
    Keep the heredoc delimiter quoted (`<<'PY'`) so the shell does not expand anything inside the script. The script checks the HTTP status, saves the full response to a temporary file, and prints at most 20 KB.
 
 ```bash
-python3 - 'URL' 'PARSED' 'COUNTRY' <<'PY'
+python3 - 'URL' 'MODE' 'COUNTRY' <<'PY'
 import glob, http.client, json, os, re, sys, tempfile, time, urllib.error, urllib.parse, urllib.request
 
 LIMIT = 20000
@@ -43,16 +46,21 @@ CONTROL = re.compile(r"[\x00-\x08\x0b-\x1f\x7f-\x9f]")
 def show(raw):
     print(CONTROL.sub("", raw[:LIMIT].decode("utf-8", "ignore")))
     if len(raw) > LIMIT:
-        print(f"\n[HTML truncated to {LIMIT} bytes; the full page is in the saved file]")
+        print(f"\n[Output truncated to {LIMIT} bytes; the full page is in the saved file]")
 
 
-url, parsed, country = sys.argv[1], sys.argv[2] == "1", sys.argv[3]
+url, mode, country = sys.argv[1], sys.argv[2], sys.argv[3]
+if mode not in ("html", "parsed", "markdown"):
+    sys.exit(f"ERROR: MODE must be html, parsed or markdown, not {mode!r}")
+parsed = mode == "parsed"
 key = os.environ.get("SCRAPEUNBLOCKER_KEY")
 if not key:
     sys.exit("SCRAPEUNBLOCKER_KEY is not set")
 query = {"url": url}
 if parsed:
     query["parsed_data"] = "true"
+elif mode == "markdown":
+    query["markdown"] = "true"
 if country:
     query["proxy_country"] = country.upper()
 req = urllib.request.Request(
@@ -96,7 +104,7 @@ for old in glob.glob(os.path.join(tempfile.gettempdir(), "scrapeunblocker-*")):
             os.remove(old)
     except OSError:
         pass
-fd, path = tempfile.mkstemp(prefix="scrapeunblocker-", suffix=".json" if parsed else ".html")
+fd, path = tempfile.mkstemp(prefix="scrapeunblocker-", suffix={"parsed": ".json", "markdown": ".md"}.get(mode, ".html"))
 with os.fdopen(fd, "wb") as f:
     f.write(body)
 print(f"HTTP {status}, {len(body)} bytes, full response saved to {path}")
@@ -142,4 +150,5 @@ PY
 ## Notes
 
 - For structured fields (price, title, etc.), pass `parsed` to get clean JSON instead of HTML.
+- To read or summarise a page, pass `markdown`: it is a fraction of the HTML's size, so much more of the page fits in the output.
 - Docs: https://docs.scrapeunblocker.com?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin
