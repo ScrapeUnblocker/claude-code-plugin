@@ -14,7 +14,6 @@ Use the plugin's MCP tools (`google_search`, `fetch_parsed`) or the HTTP endpoin
 1. **Find the listings.** `google_search` the product (`"<product name>" price` or an exact model/ASIN), or use Google Shopping. Take the retailer URLs.
 2. **Pull each offer as structured data:**
    - **eBay** - use the `ebay-search` plugin (`POST /marketplace/ebay-search`) for clean listings.
-   - **Temu** - `temu-product` / `temu-search` plugins.
    - **Amazon / Walmart / Best Buy / any shop** - `fetch_parsed` (or `getPageSource?parsed_data=true`) returns price, title, availability without custom parsers.
 3. **Normalize** - same currency, note shipping and stock status, drop irrelevant variants.
 4. **Rank** into a single table: retailer | price | shipping | in stock | link, cheapest in-stock first, with a one-line recommendation.

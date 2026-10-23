@@ -1,6 +1,6 @@
 ---
 name: structured-data
-description: "Get ready-made structured JSON from specific sites through ScrapeUnblocker's plugins, instead of scraping HTML yourself - Skyscanner flights/hotels/car hire, Google Local (Maps), eBay search, Temu product/search, and oopbuy. Use when the user wants clean data from one of these platforms, or asks to 'get flights', 'search eBay', 'Temu product', 'local businesses near', or 'places on Google Maps'. For any other site, use parsed_data=true (see the parsed-data skill)."
+description: "Get ready-made structured JSON from specific sites through ScrapeUnblocker's plugins, instead of scraping HTML yourself - Skyscanner flights/hotels/car hire, Google Local (Maps), eBay search, and oopbuy. Use when the user wants clean data from one of these platforms, or asks to 'get flights', 'search eBay', 'local businesses near', or 'places on Google Maps'. For any other site, use parsed_data=true (see the parsed-data skill)."
 ---
 
 # Structured data via ScrapeUnblocker plugins
@@ -16,8 +16,6 @@ For a handful of high-value platforms, ScrapeUnblocker ships **plugins**: dedica
 | Car hire | `POST /carhire/skyscanner-quotes` |
 | Local businesses (Google Maps) | `POST /maps/google-local` |
 | eBay search | `POST /marketplace/ebay-search` |
-| Temu product | `POST /goods/temu-product` |
-| Temu search | `POST /goods/temu-search` |
 | oopbuy search | `POST /goods/oopbuy-search` |
 
 All take `x-scrapeunblocker-key` and their own query params. Example:
@@ -46,7 +44,7 @@ product = su.get_parsed("https://www.example-shop.com/product/123")
 
 ## Choosing
 
-1. **Is it a plugin platform** (Skyscanner / Google Local / eBay / Temu / oopbuy)? Use the plugin - it's the cleanest.
+1. **Is it a plugin platform** (Skyscanner / Google Local / eBay / oopbuy)? Use the plugin - it's the cleanest.
 2. **Any other product / article / listing page?** Use `parsed_data=true`.
 3. **Only reading or summarising the page?** Use `markdown=true` (or the MCP tool `fetch_markdown`).
 4. **Need raw HTML** (custom parsing, non-standard page)? Use the `page-source` skill.
