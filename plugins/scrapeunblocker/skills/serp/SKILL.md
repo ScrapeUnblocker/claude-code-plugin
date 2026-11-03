@@ -18,10 +18,10 @@ curl -X POST "https://api.scrapeunblocker.com/serpApi?keyword=web+scraping+api" 
 
 The query goes in `keyword` (URL-encoded). The response is JSON with:
 
-- `organic` - `title`, real `url`, `description` (the snippet), `position`, `displayedUrl` (the breadcrumb), `domain`, `source` (the site's name) and `date` when Google shows one.
-- `topAds` / `bottomAds` - `title`, `url`, `description`, `position`, `displayedUrl`, `domain`, `advertiser`.
+- `organic` - `title`, real `url`, `description` (the snippet), `position`, `displayedUrl` (the breadcrumb), `domain`, `source` (the site's name), `date` when Google shows one, `favicon`, `sitelinks` (`title`, `url`, `description`), `rating` (`value`, `max`, `reviews`), `richSnippet` (the facts line under the snippet) and `thumbnail` - each `[]` or `null` when absent.
+- `topAds` / `bottomAds` - `title`, `url`, `description`, `position`, `displayedUrl`, `domain`, `advertiser`, `favicon`, `sitelinks`.
 - `aiOverview` - Google's AI summary (`text`, `markdown`, `sources`, `references`), or `null`.
-- The first page's other blocks, each `[]` or `null` when absent: `peopleAlsoAsk` (`question`), `relatedSearches` (strings), `knowledgeGraph` (`title`, `subtitle`, `description`, `source`, `attributes`), `topStories` (`title`, `url`, `source`, `date`, `publishedAt`), `videos` (`title`, `url`, `platform`, `channel`, `date`, `duration`), `localResults` (the map pack: `name`, `rating`, `reviews`, `address`, `phone`, `website`, ...), `shoppingResults` (`title`, `price`, `currency`, `merchant`, `rating`, ...) and `spellingCorrection` (`type`, `query`).
+- The first page's other blocks, each `[]` or `null` when absent: `peopleAlsoAsk` (`question`), `relatedSearches` (strings) and `relatedSearchLinks` (`query`, `url`), `knowledgeGraph` (`title`, `subtitle`, `description`, `source`, `attributes`), `topStories` (`title`, `url`, `source`, `date`, `publishedAt`), `videos` (`title`, `url`, `platform`, `channel`, `date`, `duration`), `localResults` (the map pack: `name`, `rating`, `reviews`, `address`, `phone`, `website`, ...), `shoppingResults` (`title`, `price`, `currency`, `merchant`, `rating`, ...) and `spellingCorrection` (`type`, `query`).
 - `totalResults`, the counts and `pagesFetched` (pages billed).
 
 ## Parameters
