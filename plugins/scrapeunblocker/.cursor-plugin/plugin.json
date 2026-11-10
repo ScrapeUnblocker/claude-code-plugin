@@ -19,7 +19,7 @@
     "structured-data",
     "anti-bot"
   ],
-  "logo": "assets/logo.svg",
+  "logo": "assets/logo-plate.svg",
   "skills": "./skills/",
   "commands": [],
   "mcpServers": "./mcp.json"
