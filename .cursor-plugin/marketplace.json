@@ -1,0 +1,18 @@
+{
+  "name": "scrapeunblocker",
+  "owner": {
+    "name": "ScrapeUnblocker",
+    "email": "info@scrapeunblocker.com"
+  },
+  "metadata": {
+    "description": "Official ScrapeUnblocker plugin for Cursor - live web data for the agent.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "scrapeunblocker",
+      "source": "plugins/scrapeunblocker",
+      "description": "Live web data for Cursor's agent through ScrapeUnblocker: read any page in a real browser as Markdown, HTML or AI-parsed JSON, run Google searches, and get structured JSON from 100+ sites (Amazon, Walmart, eBay, Google Maps, YouTube, Zillow and more), including pages behind Cloudflare, DataDome, PerimeterX and Akamai. Sign in with your ScrapeUnblocker account, no key to paste. Includes skills for page source, parsed data, Google results, site plugins, competitive intelligence, price comparison and integration best practices."
+    }
+  ]
+}

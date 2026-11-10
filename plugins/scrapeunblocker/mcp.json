@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "scrapeunblocker": {
+      "url": "https://mcp.scrapeunblocker.com/mcp/oauth",
+      "auth": {
+        "CLIENT_ID": "D1jvSq2WpNu4Ue8WFWFTUpHsKtDfngkF",
+        "scopes": [
+          "openid",
+          "email",
+          "offline_access",
+          "mcp:use"
+        ]
+      }
+    }
+  }
+}

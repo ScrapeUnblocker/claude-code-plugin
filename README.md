@@ -1,6 +1,6 @@
-# ScrapeUnblocker plugin for Claude Code
+# ScrapeUnblocker plugin for Claude Code and Cursor
 
-Official [Claude Code](https://claude.com/claude-code) plugin marketplace for [ScrapeUnblocker](https://scrapeunblocker.com?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin) - fetch any web page from behind anti-bot protection (Cloudflare, DataDome, PerimeterX, Akamai, Shape) without writing a scraper.
+Official [Claude Code](https://claude.com/claude-code) and [Cursor](https://cursor.com) plugin for [ScrapeUnblocker](https://scrapeunblocker.com?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin) - fetch any web page from behind anti-bot protection (Cloudflare, DataDome, PerimeterX, Akamai, Shape) without writing a scraper.
 
 ## Install
 
@@ -12,6 +12,24 @@ In Claude Code:
 ```
 
 You will be asked for your ScrapeUnblocker API key when the plugin is enabled. It is stored in your OS keychain, not in a settings file. Get a key at [app.scrapeunblocker.com](https://app.scrapeunblocker.com?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin).
+
+## Install in Cursor
+
+The same plugin ships a Cursor manifest (`.cursor-plugin/`). Its MCP server is the hosted
+one (`https://mcp.scrapeunblocker.com/mcp/oauth`): you sign in with your ScrapeUnblocker
+account once, and there is no key to paste.
+
+Until it is listed in the Cursor Marketplace, install it locally:
+
+```bash
+git clone https://github.com/ScrapeUnblocker/claude-code-plugin
+mkdir -p ~/.cursor/plugins/local
+cp -r claude-code-plugin/plugins/scrapeunblocker ~/.cursor/plugins/local/scrapeunblocker
+```
+
+Then run **Developer: Reload Window**, open **Customize**, find the `scrapeunblocker` MCP
+server and click **Connect** to sign in. The skills load with it; the `/scrape-url`
+command is Claude Code only.
 
 ## What you get
 

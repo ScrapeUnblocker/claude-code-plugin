@@ -1,0 +1,26 @@
+{
+  "name": "scrapeunblocker",
+  "version": "1.0.0",
+  "description": "Live web data for Cursor's agent through ScrapeUnblocker: read any page in a real browser as Markdown, HTML or AI-parsed JSON, run Google searches, and get structured JSON from 100+ sites (Amazon, Walmart, eBay, Google Maps, YouTube, Zillow and more), including pages behind Cloudflare, DataDome, PerimeterX and Akamai. Sign in with your ScrapeUnblocker account, no key to paste. Includes skills for page source, parsed data, Google results, site plugins, competitive intelligence, price comparison and integration best practices.",
+  "author": {
+    "name": "ScrapeUnblocker",
+    "email": "info@scrapeunblocker.com"
+  },
+  "homepage": "https://docs.scrapeunblocker.com?utm_source=cursor&utm_medium=integration&utm_campaign=cursor-plugin",
+  "repository": "https://github.com/ScrapeUnblocker/claude-code-plugin",
+  "license": "MIT",
+  "keywords": [
+    "scraping",
+    "web-data",
+    "mcp",
+    "markdown",
+    "serp",
+    "google-search",
+    "structured-data",
+    "anti-bot"
+  ],
+  "logo": "assets/logo.svg",
+  "skills": "./skills/",
+  "commands": [],
+  "mcpServers": "./mcp.json"
+}
