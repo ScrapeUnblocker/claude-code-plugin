@@ -31,6 +31,7 @@ The query goes in `keyword` (URL-encoded). The response is JSON with:
 | `keyword` | The search query (required, URL-encoded) |
 | `proxy_country` | Search as if from this country, e.g. `US`, `DE` - changes the exit and the Google locale/domain |
 | `pages_to_check` | How many result pages to pull (1-10; default 1) |
+| `full_urls` | `true` waits until Google gives out every result's real URL. Google releases a results page's links a few at a time, the last ones up to about 40 seconds after the search; without it a result whose link has not come yet has the site's home page as its `url` (or a Google redirect link). With it the call takes up to about 40 seconds longer (about 35-50 s in all). Billed the same |
 
 ## Country matters
 
@@ -50,7 +51,7 @@ curl -X POST "https://api.scrapeunblocker.com/serpApi?keyword=best+running+shoes
 
 ## Tips
 
-- Read `organic[].url` for the real destination; check `title`/`description` for context.
+- Read `organic[].url` for the real destination; check `title`/`description` for context. When you need the exact page URL of every result (to cite, open or store them), pass `full_urls=true` (MCP: `full_urls: true` on `google_search`); leave it off for quick answers.
 - Empty `organic` with a present `aiOverview` usually means an informational query - refine the keyword.
 
 Docs: https://docs.scrapeunblocker.com/guides/serp-scraping?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin
