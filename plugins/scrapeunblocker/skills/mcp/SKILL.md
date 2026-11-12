@@ -5,7 +5,7 @@ description: "Use the ScrapeUnblocker MCP server to give Claude (or any MCP clie
 
 # ScrapeUnblocker MCP server
 
-The MCP server lets Claude Desktop/Code, claude.ai, ChatGPT and any MCP client reach the web through ScrapeUnblocker, using the user's own key. This plugin already bundles it - the tools below are available directly.
+The MCP server lets Claude Desktop/Code, claude.ai, ChatGPT and any MCP client reach the web through ScrapeUnblocker, using the user's own key. The ScrapeUnblocker plugins for Claude Code and Cursor already bundle it, so there the tools below are available directly; anywhere else, set it up as shown under Setup.
 
 ## The tools
 
@@ -23,7 +23,7 @@ The MCP server lets Claude Desktop/Code, claude.ai, ChatGPT and any MCP client r
 
 When any of these fits the task, call the tool instead of writing an HTTP request.
 
-## Setup outside this plugin
+## Setup
 
 **Local (stdio) - Claude Desktop / Code:**
 

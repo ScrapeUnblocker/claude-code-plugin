@@ -56,11 +56,36 @@ command is Claude Code only.
 /scrapeunblocker:scrape-url https://example.com country=US
 ```
 
-**Skills** - reference material Claude pulls in when it is writing scraping code for your project:
+**Skills** - instructions the agent loads when a task matches, for using ScrapeUnblocker well and for writing scraping code into your project:
 
-- `best-practices` - endpoints, parameters, retries, choosing the right call
-- `page-source` - fetching rendered HTML or Markdown (`markdown=true`), render waits, country targeting
-- `parsed-data` - structured extraction and how to fix a bad parse
+| Skill | What it teaches the agent |
+|-------|---------------------------|
+| `best-practices` | Endpoints, parameters, retries, choosing the right call |
+| `page-source` | Rendered HTML or Markdown (`markdown=true`), render waits, country targeting |
+| `parsed-data` | AI-parsed structured JSON and how to fix a bad parse |
+| `serp` | Google results as JSON: organic with real URLs, ads, AI overview, People also ask, local, shopping |
+| `structured-data` | Ready-made site plugins (Skyscanner, eBay, Google Local) instead of hand-written parsers |
+| `mcp` | Setting up the ScrapeUnblocker MCP server (local and hosted) in any MCP client |
+| `competitive-intel` | Competitor pricing, features, reviews and hiring signals from their own sites |
+| `price-comparison` | Live prices and stock across retailers, ranked into one recommendation |
+
+## Agent Skills for any agent
+
+The skills are plain [Agent Skills](https://agentskills.io) (`SKILL.md` folders), so they also work without the plugin - in Codex, Gemini CLI, VS Code Copilot, Windsurf, Cursor or Claude Code. Install all eight with the [`skills`](https://github.com/vercel-labs/skills) CLI:
+
+```bash
+npx skills add ScrapeUnblocker/claude-code-plugin
+```
+
+Or pick one:
+
+```bash
+npx skills add ScrapeUnblocker/claude-code-plugin --skill page-source
+```
+
+You can also copy a folder from [`plugins/scrapeunblocker/skills/`](plugins/scrapeunblocker/skills) into your agent's skills folder (`.claude/skills/`, `.agents/skills/`, `.cursor/skills/`...).
+
+Without the plugin, the skills call the HTTP API with your key: put it in the `SCRAPEUNBLOCKER_KEY` environment variable (the SDKs read it from there). Get a key at [app.scrapeunblocker.com](https://app.scrapeunblocker.com?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin). For tool calls instead of HTTP, add the [MCP server](https://www.npmjs.com/package/scrapeunblocker-mcp) too.
 
 ## Why
 

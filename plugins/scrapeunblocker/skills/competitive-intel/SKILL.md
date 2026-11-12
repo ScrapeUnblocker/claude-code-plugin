@@ -7,7 +7,7 @@ description: "Real-time competitive and market intelligence using ScrapeUnblocke
 
 Turn public web pages into a competitor picture. ScrapeUnblocker handles the hard part - reaching pages that block scrapers (Cloudflare, DataDome, PerimeterX, Akamai) - so you can focus on what to collect and how to read it.
 
-Use the plugin's MCP tools (`google_search`, `fetch_markdown`, `fetch_parsed`, `fetch_html`) or the HTTP endpoints.
+If the ScrapeUnblocker MCP server is connected, use its tools (`google_search`, `fetch_markdown`, `fetch_parsed`, `fetch_html`); otherwise call the HTTP endpoints with the user's API key.
 
 ## Workflow
 

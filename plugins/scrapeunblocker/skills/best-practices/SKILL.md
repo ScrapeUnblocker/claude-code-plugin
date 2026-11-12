@@ -8,9 +8,9 @@ user-invocable: false
 
 ScrapeUnblocker renders web pages behind anti-bot protection and returns the HTML, clean Markdown, AI-parsed structured JSON, Google search results, or images. One API key, a handful of endpoints. Get a key at https://app.scrapeunblocker.com?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin and read the docs at https://docs.scrapeunblocker.com?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin.
 
-## Prefer the MCP tools when this plugin is installed
+## Prefer the MCP tools when the MCP server is connected
 
-This plugin ships an MCP server, so the fastest path is usually a tool call rather than a hand-written HTTP request:
+If the ScrapeUnblocker MCP server is connected (the Claude Code and Cursor plugins bundle it; for other clients see the `mcp` skill), the fastest path is usually a tool call rather than a hand-written HTTP request:
 
 | Tool | Returns |
 |------|---------|

@@ -7,7 +7,7 @@ description: "Get structured Google search results through ScrapeUnblocker's ser
 
 Use ScrapeUnblocker's `serpApi` endpoint to get Google results as structured JSON. Google is a hard target - do **not** scrape `google.com` HTML by hand; this endpoint handles the rendering, CAPTCHAs and parsing for you.
 
-With this plugin installed, the quickest route is the MCP tool `google_search`. The HTTP form below is for code you write into the user's project.
+If the ScrapeUnblocker MCP server is connected, the quickest route is its tool `google_search`. The HTTP form below is for code you write into the user's project.
 
 ## Basic request
 

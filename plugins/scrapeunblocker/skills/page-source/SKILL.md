@@ -8,7 +8,7 @@ user-invocable: false
 
 Use ScrapeUnblocker's `getPageSource` endpoint to get the fully rendered HTML, or clean Markdown, of a page that would otherwise block you.
 
-With this plugin installed, the quickest route is the MCP tool `fetch_html` (or `fetch_markdown` to read the page). The HTTP and SDK forms below are for code you write into the user's project.
+If the ScrapeUnblocker MCP server is connected, the quickest route is its tool `fetch_html` (or `fetch_markdown` to read the page). The HTTP and SDK forms below are for code you write into the user's project.
 
 ## Basic request
 

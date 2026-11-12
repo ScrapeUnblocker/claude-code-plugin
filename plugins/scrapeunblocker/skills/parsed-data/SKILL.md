@@ -8,7 +8,7 @@ user-invocable: false
 
 Instead of fetching HTML and writing brittle per-site parsers, ask ScrapeUnblocker to return structured JSON directly with `parsed_data=true`.
 
-With this plugin installed, the quickest route is the MCP tool `fetch_parsed`. The HTTP and SDK forms below are for code you write into the user's project.
+If the ScrapeUnblocker MCP server is connected, the quickest route is its tool `fetch_parsed`. The HTTP and SDK forms below are for code you write into the user's project.
 
 ## Request
 

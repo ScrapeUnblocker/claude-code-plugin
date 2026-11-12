@@ -7,7 +7,7 @@ description: "Shopping price comparison with ScrapeUnblocker's live web data - f
 
 Answer "where is this cheapest, in stock, right now?" by pulling live prices from multiple retailers - including the ones that block scrapers.
 
-Use the plugin's MCP tools (`google_search`, `fetch_parsed`) or the HTTP endpoints / plugins.
+If the ScrapeUnblocker MCP server is connected, use its tools (`google_search`, `fetch_parsed`, `amazon_search`, `walmart_search`, `ebay_search`, `google_shopping`); otherwise call the HTTP endpoints and site plugins with the user's API key.
 
 ## Workflow
 
