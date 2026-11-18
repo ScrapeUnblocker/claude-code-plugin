@@ -19,6 +19,7 @@ If the ScrapeUnblocker MCP server is connected (the Claude Code and Cursor plugi
 | `google_search` | Organic Google results |
 | `fetch_markdown` | A page as clean Markdown |
 | `search_and_read` | A Google search plus its top result pages as Markdown |
+| `capture_xhr` | The JSON a page's own API calls (XHR/fetch) received, optionally after browser `steps` |
 
 Use the HTTP details below when writing code for the user's own project, or when the MCP server is not available.
 
@@ -29,6 +30,7 @@ Use the HTTP details below when writing code for the user's own project, or when
 | Fetch a page's fully rendered HTML | `POST /getPageSource` | Bypasses anti-bot, runs a real browser |
 | A page for an LLM to read (summaries, RAG, agents) | `POST /getPageSource?markdown=true` | Clean Markdown, main content only by default |
 | Structured data (product, article, listing) without writing parsers | `POST /getPageSource?parsed_data=true` | Returns AI-parsed JSON (Schema.org / `__NEXT_DATA__` / AI rules) |
+| Data a page loads from its own JSON API (which refuses direct requests) | `POST /getPageSource?capture_xhr=/api/...` | The page's XHR/fetch responses as JSON; add `steps` to trigger the call |
 | Google search results | `POST /serpApi` | Structured organic results |
 | Download an image behind protection | `POST /getImage` | Returns raw bytes |
 
@@ -52,6 +54,7 @@ The URL must be URL-encoded and passed as the `url` query parameter.
 | `parsed_data=true` | Return AI-parsed JSON instead of raw HTML |
 | `markdown=true` | Return the page as clean Markdown (`text/markdown`) instead of HTML |
 | `main_content_only=false` | With `markdown=true`: convert the whole page, not only the main content (default `true`) |
+| `capture_xhr=/api/search` | Return the page's own XHR/fetch responses whose URL contains the fragment (JSON: `html`, `xhr`, `xhr_truncated`), up to 20 |
 | `proxy_country=US` | Route through a specific country (ISO alpha-2) |
 | `method=css` + `value=%23price` | Wait for a CSS selector (`#price`) before capturing |
 | `method=xPath` + `value=//div[@id='price']` | Wait for an XPath match (`className` and `tagName` also work) |

@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Official ScrapeUnblocker plugin for Cursor - live web data for the agent.",
-    "version": "1.0.0"
+    "version": "1.1.0"
   },
   "plugins": [
     {

@@ -1,6 +1,6 @@
 ---
 name: page-source
-description: "Fetch the fully rendered HTML of any web page through ScrapeUnblocker, or the page as clean Markdown for an LLM to read, bypassing anti-bot protection (Cloudflare, DataDome, PerimeterX, Akamai, Shape). Use when a normal request is blocked (403/429, captcha, 'access denied') or when a page needs a real browser to render. Covers the getPageSource endpoint, Markdown output (markdown=true), render waits, and country targeting."
+description: "Fetch the fully rendered HTML of any web page through ScrapeUnblocker, or the page as clean Markdown for an LLM to read, bypassing anti-bot protection (Cloudflare, DataDome, PerimeterX, Akamai, Shape). Use when a normal request is blocked (403/429, captcha, 'access denied') or when a page needs a real browser to render. Covers the getPageSource endpoint, Markdown output (markdown=true), the page's own XHR/fetch API responses (capture_xhr), render waits, and country targeting."
 user-invocable: false
 ---
 
@@ -54,6 +54,24 @@ curl -X POST "https://api.scrapeunblocker.com/getPageSource?url=https%3A%2F%2Fex
 - **Markdown** (`markdown=true`): reading, summarising, RAG, or handing a page to an LLM. A fraction of the HTML's tokens.
 - **Parsed JSON** (`parsed_data=true`, see the `parsed-data` skill): named fields (price, title, rating) going into a database.
 - **HTML** (the default): your own parser, CSS/XPath selectors, or anything that needs the markup.
+- **The page's own API calls** (`capture_xhr=<URL fragment>`): the data arrives as JSON from an API the page calls itself (search results, "load more", prices filled in after load), and that API refuses direct requests.
+
+## The page's own API calls (capture_xhr)
+
+Many sites render from a JSON API the page calls itself, and the API often refuses direct requests (the page signs every call). Pass a fragment of that API's URL as `capture_xhr` (plain substring, URL-encoded like `url`): the page is rendered in a real browser and every XHR/fetch response whose URL contains it comes back as JSON.
+
+```bash
+curl -X POST "https://api.scrapeunblocker.com/getPageSource?url=https%3A%2F%2Fquotes.toscrape.com%2Fscroll&capture_xhr=%2Fapi%2Fquotes" \
+  -H "X-ScrapeUnblocker-Key: YOUR_API_KEY"
+```
+
+- The answer is JSON: `html` (the rendered page), `xhr` (each call's `url`, `method`, `status`, `content_type`, `body` as text, and `body_omitted` with the reason when there is no body: a redirect, binary content, a failed request, still in flight, or over the size budget), `xhr_truncated` and `proxy`. Parse each `body` yourself (`json.loads`).
+- Up to 20 calls and 10 MB of bodies, in the order the page received them. Find the fragment in the browser's DevTools Network tab (filter Fetch/XHR).
+- Add browser `steps` (a JSON array, URL-encoded) to make the page fire the call: type a search and press Enter, click "load more", scroll. If a step fails, the 422 `step_failed` body still carries the `xhr` captured before it.
+- Combined with `markdown`, `parsed_data`, `list_elements` or `get_cookies` the API answers 422. `proxy_country` works as usual.
+- Billed as one request. When the site answers every matching call with 403 or 429, the API answers 403 and the call is not billed; no matching call at all comes back as 200 with an empty `xhr` (check the fragment or add steps).
+- SDKs: `get_page_with_xhr` (Python, Ruby, Rust), `getPageWithXhr` (Node.js, PHP). MCP: the `capture_xhr` tool.
+- Guide: https://docs.scrapeunblocker.com/guides/xhr-capture?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin
 
 ## Waiting for dynamic content
 
