@@ -11,7 +11,7 @@ The MCP server lets Claude Desktop/Code, claude.ai, ChatGPT and any MCP client r
 
 | Tool | What it returns |
 |---|---|
-| `fetch_html` | Fully rendered HTML of a URL (anti-bot bypassed) |
+| `fetch_html` | Fully rendered HTML of a URL (real browser) |
 | `fetch_parsed` | AI-parsed structured JSON of a URL |
 | `google_search` | Structured Google organic results |
 | `fetch_markdown` | A page as clean Markdown (main content, absolute links; `main_content_only: false` for the whole page), usually 2-25% the size of the HTML |

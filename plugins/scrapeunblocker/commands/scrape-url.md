@@ -2,12 +2,12 @@
 name: scrape-url
 allowed-tools: Bash(python3:*)
 argument-hint: "<url> [parsed|markdown] [country=XX]"
-description: "Scrape any web page through the ScrapeUnblocker anti-bot API and return its HTML, clean Markdown or AI-parsed JSON. Use when a page is blocked (403/429, captcha) or needs a real browser to render."
+description: "Fetch any web page through ScrapeUnblocker and return its HTML, clean Markdown or AI-parsed JSON. Use when a page does not load with a plain fetch (403/429) or needs a real browser to render."
 ---
 
 # Scrape a URL with ScrapeUnblocker
 
-Fetch the target page through ScrapeUnblocker, bypassing anti-bot protection (Cloudflare, DataDome, PerimeterX, Akamai, Shape).
+Fetch the target page through ScrapeUnblocker in a real browser.
 
 Arguments: $ARGUMENTS
 
@@ -139,7 +139,7 @@ PY
 
 4. **Check the outcome before using it.**
    - If the tool or script returns an error (`ERROR: ...`), report that error to the user and stop. Do not summarize an error message as if it were page content.
-   - An HTTP 200 does not always mean the page was delivered: the body can itself be a block or captcha page (titles such as "Just a moment...", "Access Denied"). If it looks like one, say so, and suggest retrying once or adding `country=XX`.
+   - An HTTP 200 does not always mean the page was delivered: the body can itself be an error or interstitial page (titles such as "Just a moment...", "Access Denied"). If it looks like one, say so, and suggest retrying once or adding `country=XX`.
    - If the script output was truncated or the parsed JSON was too large to print, read the fields you need from the saved file with `python3` instead of guessing.
    - If a `parsed` call says no structured data could be extracted (`data_extracted: false`), the page itself is still returned as HTML - work from that HTML; do not call again without `parsed`.
 

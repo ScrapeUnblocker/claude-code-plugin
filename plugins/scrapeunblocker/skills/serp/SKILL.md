@@ -1,11 +1,11 @@
 ---
 name: serp
-description: "Get structured Google search results through ScrapeUnblocker's serpApi - organic listings with real URLs, ads, the AI overview, People also ask, related searches, the knowledge panel, news, videos, local and shopping results as clean JSON, without scraping Google HTML or hitting CAPTCHAs. Use when the user wants search results, needs URLs to feed into scraping, wants to check rankings, or asks to 'search Google', 'find pages about', or 'look up' something. Supports country targeting and multi-page depth."
+description: "Get structured Google search results through ScrapeUnblocker's serpApi - organic listings with real URLs, ads, the AI overview, People also ask, related searches, the knowledge panel, news, videos, local and shopping results as clean JSON, without parsing Google HTML yourself. Use when the user wants search results, needs URLs to feed into scraping, wants to check rankings, or asks to 'search Google', 'find pages about', or 'look up' something. Supports country targeting and multi-page depth."
 ---
 
 # Google search results with ScrapeUnblocker
 
-Use ScrapeUnblocker's `serpApi` endpoint to get Google results as structured JSON. Google is a hard target - do **not** scrape `google.com` HTML by hand; this endpoint handles the rendering, CAPTCHAs and parsing for you.
+Use ScrapeUnblocker's `serpApi` endpoint to get Google results as structured JSON. Google is a hard target - do **not** scrape `google.com` HTML by hand; this endpoint handles the rendering and parsing for you.
 
 If the ScrapeUnblocker MCP server is connected, the quickest route is its tool `google_search`. The HTTP form below is for code you write into the user's project.
 

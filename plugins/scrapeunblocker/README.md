@@ -1,6 +1,6 @@
 # ScrapeUnblocker plugin
 
-Scrape any web page from behind anti-bot protection (Cloudflare, DataDome, PerimeterX, Akamai, Shape) directly from Claude Code.
+Web search and content extraction for Claude Code: Google results, any public web page as Markdown, HTML or AI-parsed JSON, and structured data from 180+ sites.
 
 Install from the marketplace in this repository:
 

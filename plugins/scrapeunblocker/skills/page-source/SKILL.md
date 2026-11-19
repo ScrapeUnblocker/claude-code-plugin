@@ -1,6 +1,6 @@
 ---
 name: page-source
-description: "Fetch the fully rendered HTML of any web page through ScrapeUnblocker, or the page as clean Markdown for an LLM to read, bypassing anti-bot protection (Cloudflare, DataDome, PerimeterX, Akamai, Shape). Use when a normal request is blocked (403/429, captcha, 'access denied') or when a page needs a real browser to render. Covers the getPageSource endpoint, Markdown output (markdown=true), the page's own XHR/fetch API responses (capture_xhr), render waits, and country targeting."
+description: "Fetch the fully rendered HTML of any web page through ScrapeUnblocker, or the page as clean Markdown for an LLM to read. Use when a plain request fails (403/429, 'access denied', an empty JavaScript shell) or when a page needs a real browser to render. Covers the getPageSource endpoint, Markdown output (markdown=true), the page's own XHR/fetch API responses (capture_xhr), render waits, and country targeting."
 user-invocable: false
 ---
 

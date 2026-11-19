@@ -1,12 +1,12 @@
 ---
 name: best-practices
-description: "Build production-ready ScrapeUnblocker integrations. Reference for developers using coding assistants (Claude Code, Cursor, etc.) to scrape any URL with built-in anti-bot bypass (Cloudflare, DataDome, PerimeterX, Akamai, Shape). Covers the getPageSource endpoint (raw HTML / Markdown / AI-parsed JSON), serpApi (Google results), getImage, country targeting, render waits, and retries."
+description: "Build production-ready ScrapeUnblocker integrations. Reference for developers using coding assistants (Claude Code, Cursor, etc.) to fetch any public URL in a real browser and extract its content. Covers the getPageSource endpoint (raw HTML / Markdown / AI-parsed JSON), serpApi (Google results), getImage, country targeting, render waits, and retries."
 user-invocable: false
 ---
 
 # ScrapeUnblocker API
 
-ScrapeUnblocker renders web pages behind anti-bot protection and returns the HTML, clean Markdown, AI-parsed structured JSON, Google search results, or images. One API key, a handful of endpoints. Get a key at https://app.scrapeunblocker.com?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin and read the docs at https://docs.scrapeunblocker.com?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin.
+ScrapeUnblocker renders web pages in a real browser and returns the HTML, clean Markdown, AI-parsed structured JSON, Google search results, or images. One API key, a handful of endpoints. Get a key at https://app.scrapeunblocker.com?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin and read the docs at https://docs.scrapeunblocker.com?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin.
 
 ## Prefer the MCP tools when the MCP server is connected
 
@@ -27,7 +27,7 @@ Use the HTTP details below when writing code for the user's own project, or when
 
 | Use case | Endpoint | Notes |
 |----------|----------|-------|
-| Fetch a page's fully rendered HTML | `POST /getPageSource` | Bypasses anti-bot, runs a real browser |
+| Fetch a page's fully rendered HTML | `POST /getPageSource` | Runs a real browser, returns the rendered page |
 | A page for an LLM to read (summaries, RAG, agents) | `POST /getPageSource?markdown=true` | Clean Markdown, main content only by default |
 | Structured data (product, article, listing) without writing parsers | `POST /getPageSource?parsed_data=true` | Returns AI-parsed JSON (Schema.org / `__NEXT_DATA__` / AI rules) |
 | Data a page loads from its own JSON API (which refuses direct requests) | `POST /getPageSource?capture_xhr=/api/...` | The page's XHR/fetch responses as JSON; add `steps` to trigger the call |
@@ -68,9 +68,9 @@ The URL must be URL-encoded and passed as the `url` query parameter.
 - **Pick the format for the consumer.** Markdown (`markdown=true`) for text an LLM reads: summaries, RAG, agents. Parsed JSON for fields that go into a database. HTML for your own parser or selectors. `markdown` cannot be combined with `parsed_data`, `get_cookies` or `list_elements` (HTTP 422).
 - **Target the right country.** If a page is geo-restricted or localized, set `proxy_country` to match.
 - **Use render waits for JS-heavy pages.** If content loads late, wait on a CSS selector (`method=css`) or an XPath (`method=xPath`) instead of a fixed sleep.
-- **Retry transient failures.** Anti-bot pages occasionally need a second attempt; retry with backoff on 5xx or empty results. The official SDKs retry automatically.
+- **Retry transient failures.** Some pages occasionally need a second attempt; retry with backoff on 5xx or empty results. The official SDKs retry automatically.
 - **Do not retry a missing page.** A 404 or 410 carrying `X-Origin-Status` is the target site's own answer (the page does not exist), billed like any fetched page. Retrying returns the same result; drop or fix the URL.
-- **Validate the response.** Occasionally a returned page can itself be a block/captcha page; check for expected content before trusting it.
+- **Validate the response.** Occasionally a returned page can itself be an error or interstitial page; check for expected content before trusting it.
 
 ## Official SDKs and MCP
 

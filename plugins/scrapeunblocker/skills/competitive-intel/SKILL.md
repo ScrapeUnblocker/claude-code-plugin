@@ -1,11 +1,11 @@
 ---
 name: competitive-intel
-description: "Real-time competitive and market intelligence using ScrapeUnblocker's live web data - pull a competitor's pricing, features, reviews, hiring signals and positioning straight from their site and public sources, even when those pages sit behind anti-bot protection. Use when the user wants to analyze competitors, compare products, monitor pricing, build a battlecard, research a market landscape, or track what rivals are doing. For a single price check across retailers, use the price-comparison skill instead."
+description: "Real-time competitive and market intelligence using ScrapeUnblocker's live web data - pull a competitor's pricing, features, reviews, hiring signals and positioning straight from their site and public sources. Use when the user wants to analyze competitors, compare products, monitor pricing, build a battlecard, research a market landscape, or track what rivals are doing. For a single price check across retailers, use the price-comparison skill instead."
 ---
 
 # Competitive intelligence with ScrapeUnblocker
 
-Turn public web pages into a competitor picture. ScrapeUnblocker handles the hard part - reaching pages that block scrapers (Cloudflare, DataDome, PerimeterX, Akamai) - so you can focus on what to collect and how to read it.
+Turn public web pages into a competitor picture. ScrapeUnblocker handles the hard part - loading pages that a plain fetch cannot read - so you can focus on what to collect and how to read it.
 
 If the ScrapeUnblocker MCP server is connected, use its tools (`google_search`, `fetch_markdown`, `fetch_parsed`, `fetch_html`); otherwise call the HTTP endpoints with the user's API key.
 

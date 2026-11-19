@@ -1,6 +1,6 @@
 # ScrapeUnblocker plugin for Claude Code and Cursor
 
-Official [Claude Code](https://claude.com/claude-code) and [Cursor](https://cursor.com) plugin for [ScrapeUnblocker](https://scrapeunblocker.com?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin) - fetch any web page from behind anti-bot protection (Cloudflare, DataDome, PerimeterX, Akamai, Shape) without writing a scraper.
+Official [Claude Code](https://claude.com/claude-code) and [Cursor](https://cursor.com) plugin for [ScrapeUnblocker](https://scrapeunblocker.com?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin) - web search and content extraction for your coding agent: Google results, any public web page as Markdown, HTML or AI-parsed JSON, and structured data from 180+ sites, without writing a scraper.
 
 ## Install
 
@@ -37,7 +37,7 @@ command is Claude Code only.
 
 | Tool | What it does |
 |------|--------------|
-| `fetch_html` | Fully rendered HTML of any page, anti-bot bypassed |
+| `fetch_html` | Fully rendered HTML of any page, from a real browser |
 | `fetch_parsed` | AI-parsed structured JSON (products, articles, listings) instead of raw markup |
 | `google_search` | Organic Google results as structured data |
 | `fetch_markdown` | A page as clean Markdown, usually 2-25% the size of the HTML - the cheap way to read a page |
@@ -90,7 +90,7 @@ Without the plugin, the skills call the HTTP API with your key: put it in the `S
 
 ## Why
 
-Anything a normal `fetch` or `curl` returns as `403`, a captcha, or an empty JS shell comes back as the real page. Requests go through a real browser and a proxy pool, so Claude can read pages it otherwise cannot: pricing pages, marketplaces, listings, SERPs.
+Pages a plain `fetch` or `curl` cannot load (a `403`, an empty JavaScript shell) come back as the real page. Requests go through a real browser, so Claude can read pages it otherwise cannot: pricing pages, marketplaces, listings, search results.
 
 ## Links
 
