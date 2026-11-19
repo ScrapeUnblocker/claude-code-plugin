@@ -2,7 +2,7 @@
   "name": "scrapeunblocker",
   "displayName": "ScrapeUnblocker",
   "icon": "./assets/logo-plate.png",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Web search and content extraction through ScrapeUnblocker: Google results and any public web page as Markdown, HTML or AI-parsed JSON. Adds an MCP server with fetch_html, fetch_markdown, fetch_parsed, google_search, search_and_read and 100+ site plugins (Amazon, Walmart, eBay, Google Maps, YouTube, Zillow and more), a /scrape-url command, and 8 skills: page HTML and Markdown, AI-parsed structured data, Google SERP results, ready-made plugin data (Skyscanner, eBay, Google Local), the MCP server, competitive & market intelligence, shopping price comparison, and integration best practices.",
   "author": {
     "name": "ScrapeUnblocker",
@@ -11,6 +11,9 @@
   },
   "homepage": "https://docs.scrapeunblocker.com",
   "privacyPolicyUrl": "https://www.scrapeunblocker.com/privacy-policy",
+  "termsOfServiceUrl": "https://www.scrapeunblocker.com/terms-and-conditions",
+  "documentationUrl": "https://docs.scrapeunblocker.com/sdks/claude-code",
+  "supportUrl": "https://www.scrapeunblocker.com/contact",
   "repository": "https://github.com/ScrapeUnblocker/claude-code-plugin",
   "license": "MIT",
   "keywords": [
