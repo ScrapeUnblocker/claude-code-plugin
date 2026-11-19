@@ -26,6 +26,6 @@ Install from the marketplace in this repository:
 
 ## Configuration
 
-The plugin asks for your API key at enable time (`api_key`, stored as a sensitive value in the OS keychain) and passes it to the MCP server as `SCRAPEUNBLOCKER_KEY`. Get a key at [app.scrapeunblocker.com](https://app.scrapeunblocker.com?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin).
+The plugin asks for your API key at enable time (`api_key`, stored as a sensitive value in the OS keychain) and sends it to the hosted MCP server (`https://mcp.scrapeunblocker.com/mcp`) in the `x-scrapeunblocker-key` header. Nothing is installed or run on your machine for the MCP tools. Get a key at [app.scrapeunblocker.com](https://app.scrapeunblocker.com?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin).
 
 The `/scrape-url` fallback path (used only when the MCP server is unavailable) reads `SCRAPEUNBLOCKER_KEY` from your shell environment instead.

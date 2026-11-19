@@ -1,6 +1,5 @@
 ---
 name: scrape-url
-allowed-tools: Bash(python3:*)
 argument-hint: "<url> [parsed|markdown] [country=XX]"
 description: "Fetch any web page through ScrapeUnblocker and return its HTML, clean Markdown or AI-parsed JSON. Use when a page does not load with a plain fetch (403/429) or needs a real browser to render."
 ---
