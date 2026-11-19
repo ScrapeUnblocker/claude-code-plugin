@@ -28,8 +28,6 @@ Install from the marketplace in this repository:
 
 The plugin asks for your API key at enable time (`api_key`, stored as a sensitive value in the OS keychain) and sends it to the hosted MCP server (`https://mcp.scrapeunblocker.com/mcp`) in the `x-scrapeunblocker-key` header. Nothing is installed or run on your machine for the MCP tools. Get a key at [app.scrapeunblocker.com](https://app.scrapeunblocker.com?utm_source=claude-code&utm_medium=integration&utm_campaign=claude-code-plugin).
 
-The `/scrape-url` fallback path (used only when the MCP server is unavailable) reads `SCRAPEUNBLOCKER_KEY` from your shell environment instead.
-
 ## Where data goes
 
-The MCP tools call the hosted MCP server at `https://mcp.scrapeunblocker.com/mcp`. The `/scrape-url` fallback and the HTTP examples in the skills call the ScrapeUnblocker API at `https://api.scrapeunblocker.com` directly. No other service receives your data. The API keeps a per-key request history (URL and status, no page content) for 7 days so you can see your recent calls in the dashboard.
+The MCP tools call the hosted MCP server at `https://mcp.scrapeunblocker.com/mcp`. `/scrape-url` uses those MCP tools only. The skills' HTTP examples (code for your own projects, using your `SCRAPEUNBLOCKER_KEY`) call the ScrapeUnblocker API at `https://api.scrapeunblocker.com`. No other service receives your data. The API keeps a per-key request history (URL and status, no page content) for 7 days so you can see your recent calls in the dashboard.
